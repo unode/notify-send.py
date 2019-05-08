@@ -103,8 +103,12 @@ if hints:
                     exit()
             elif type == "int":
                 n.set_hint(key, int(value))
+            elif type == "double":
+                n.set_hint_double(key, float(value))
             elif type == "byte":
                 n.set_hint_byte(key, int(value))
+            elif type == "string":
+                n.set_hint_string(key, value)
             else:
                 print("Valid types are int, double, string, boolean and byte")
         except ValueError:
