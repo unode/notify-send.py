@@ -35,8 +35,8 @@ parser.add_argument(
           ' Every notification that gets created with the same NAME will'
           ' replace every notification before it with the same NAME.'))
 parser.add_argument(
-    'SUMMERY',
-    help=('Summery of the notification. Usage of \\n and \\t is possible.'))
+    'SUMMARY',
+    help=('Summary of the notification. Usage of \\n and \\t is possible.'))
 parser.add_argument(
     'BODY', nargs='?',
     help=('Body of the notification. Usage of \\n and \\t is possible.'))
@@ -56,18 +56,18 @@ def cleanUpText(text):
     return text.replace("\\n", "\n").replace("\\t", "\t")
 
 
-summery = cleanUpText(args.SUMMERY or "")
+summary = cleanUpText(args.SUMMARY or "")
 body = cleanUpText(args.BODY or "")
 
 notify2.init(appName or "")
 if icon and body:
-    n = notify2.Notification(summery, message=body, icon=icon)
+    n = notify2.Notification(summary, message=body, icon=icon)
 elif icon:
-        n = notify2.Notification(summery, icon=icon)
+    n = notify2.Notification(summary, icon=icon)
 elif body:
-    n = notify2.Notification(summery, message=body)
+    n = notify2.Notification(summary, message=body)
 else:
-    n = notify2.Notification(summery)
+    n = notify2.Notification(summary)
 
 if urgency == "low":
     n.set_urgency(notify2.URGENCY_LOW)
