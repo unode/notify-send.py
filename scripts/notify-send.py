@@ -129,10 +129,10 @@ if replacesProcess:
             conn = Client(pidf.read())
             conn.send([n, replacesProcess])
             conn.close()
-    except:
+    except Exception:
         listener = Listener()
         with open('/tmp/notify-send.py.address', 'w') as pidf:
-            pidf.write(listener.address)
+            pidf.write(str(listener.address))
         replacesProcesses = {}
         n.show()
         replacesProcesses[replacesProcess] = n.id
